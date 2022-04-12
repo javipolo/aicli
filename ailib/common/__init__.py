@@ -7,28 +7,29 @@ import os
 import yaml
 from time import time
 import urllib3
+import sys
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 # colors = {'blue': '36', 'red': '31', 'green': '32', 'yellow': '33', 'pink': '35', 'white': '37'}
 def error(text):
     color = "31"
-    print(f'\033[0;{color}m{text}\033[0;0m')
+    print(f'\033[0;{color}m{text}\033[0;0m', file=sys.stderr)
 
 
 def warning(text):
     color = "33"
-    print(f'\033[0;{color}m{text}\033[0;0m')
+    print(f'\033[0;{color}m{text}\033[0;0m', file=sys.stderr)
 
 
 def info(text):
     color = "36"
-    print(f'\033[0;{color}m{text}\033[0;0m')
+    print(f'\033[0;{color}m{text}\033[0;0m', file=sys.stderr)
 
 
 def success(text):
     color = "32"
-    print(f'\033[0;{color}m{text}\033[0;0m')
+    print(f'\033[0;{color}m{text}\033[0;0m', file=sys.stderr)
 
 
 def get_overrides(paramfile=None, param=[]):

@@ -471,8 +471,11 @@ class AssistedClient(object):
         cluster_id = self.get_cluster_id(name)
         response = self.client.v2_download_cluster_credentials(cluster_id=cluster_id, file_name="kubeconfig-noingress",
                                                                _preload_content=False)
-        with open(f"{path}/kubeconfig.{name}", "wb") as f:
-            copyfileobj(response, f)
+        if path == "-":
+            print(response.read().decode('utf-8'))
+        else:
+            with open(f"{path}/kubeconfig.{name}", "wb") as f:
+                copyfileobj(response, f)
 
     def download_discovery_ignition(self, name, path):
         infra_env_id = self.get_infra_env_id(name)
