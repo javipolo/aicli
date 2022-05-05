@@ -704,7 +704,8 @@ class AssistedClient(object):
                 else:
                     info(f"Waiting 5s for hosts to reach expected number {number}")
                     sleep(5)
-                    self.refresh_token(self.token, self.offlinetoken)
+                    if hasattr(self, 'token'):
+                        self.refresh_token(self.token, self.offlinetoken)
             except KeyboardInterrupt:
                 info("Leaving as per your request")
                 sys.exit(0)
@@ -723,7 +724,8 @@ class AssistedClient(object):
                 else:
                     info(f"Waiting 5s for cluster {name} to reach state {status}")
                     sleep(5)
-                    self.refresh_token(self.token, self.offlinetoken)
+                    if hasattr(self, 'token'):
+                        self.refresh_token(self.token, self.offlinetoken)
             except KeyboardInterrupt:
                 info("Leaving as per your request")
                 sys.exit(0)
